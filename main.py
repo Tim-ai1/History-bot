@@ -397,7 +397,7 @@ def handle_start(message):
 def handle_guess(message):
     global current_person
     if current_person:
-        if message.text.lower() == current_person.lower():
+        if message.text.lower() in current_person.lower():
             bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
         else:
             bot.send_message(message.chat.id, f'Неверно, это {current_person}')
