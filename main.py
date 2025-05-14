@@ -397,11 +397,14 @@ def handle_start(message):
 def handle_guess(message):
     global current_person
     if current_person:
-        if message.text.lower().split()[1] in current_person.lower():
-            bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
+        if ' ' in message.text:
+            if message.text.lower().split()[1] == current_person.lower():
+                bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
+            else:
+                bot.send_message(message.chat.id, f'Неверно, это {current_person}')
         else:
             bot.send_message(message.chat.id, f'Неверно, это {current_person}')
-        current_person = None
+    current_person = None
 
 
 if __name__ == '__main__':
