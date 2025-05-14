@@ -402,6 +402,8 @@ def handle_guess(message):
                 bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
             else:
                 bot.send_message(message.chat.id, f'Неверно, это {current_person}')
+        elif message.text.lower() == current_person.lower():
+            bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
         else:
             bot.send_message(message.chat.id, f'Неверно, это {current_person}')
     current_person = None
