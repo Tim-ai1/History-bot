@@ -223,7 +223,6 @@ historical_figures = {
     'Лев Толстой': 'Автор романа "Война и мир"',
     'Наполеон Бонапарт': 'Император Франции, прославившийся завоеваниями в Европе',
     'Иван Грозный': 'Первый русский царь, который провел реформы и расширил территорию России',
-    'Клеопатра': 'Последняя царица Египта, известная своими союзами с Римом',
     'Альберт Эйнштейн': 'Создатель теории относительности',
     'Христофор Колумб': 'Мореплаватель, открывший Новый Свет (Америку)',
     'Чарльз Дарвин': 'Учёный, пришедший к выводу о том, что все виды живых организмов эволюционируют со временем',
@@ -397,12 +396,7 @@ def handle_start(message):
 def handle_guess(message):
     global current_person
     if current_person:
-        if ' ' in message.text:
-            if message.text.lower().split()[1] == current_person.lower():
-                bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
-            else:
-                bot.send_message(message.chat.id, f'Неверно, это {current_person}')
-        elif message.text.lower() in current_person.lower() and len(message.text) == len(current_person):
+        if message.text.lower().split()[1] == current_person.lower() or message.text.lower() == current_person.lower().split()[1]:
             bot.send_message(message.chat.id, f'Всё верно, это {current_person}')
         else:
             bot.send_message(message.chat.id, f'Неверно, это {current_person}')
